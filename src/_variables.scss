@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap");
+
+* {
+  padding: 0;
+  outline: none;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+$primary: #ffffff;
+$text-light: #a8a8a8;
+$secondary: #000000;
+$highlight: #fee166;
+$tertiary: #f7ecfb;
+$tertiary-text: #9e00c0;
+$card: #fafafa;
+
+$unit: 5px;
+
+$tablet: 768px;
