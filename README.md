@@ -6,7 +6,10 @@ This is a simple portfolio web page containing some of my projects. The tools us
 
 The main.css and main.js file from dist folder is used in the webpage. The src folder contains two javascript and sass files which are built to generate main.js and main.css files.
 
-``` npm run start ````
+```
+npm run start 
+```
+
 This command will run webpack and watch for changes in source file and automatically build main.js and main.css files.
 
 ## Future Updates
