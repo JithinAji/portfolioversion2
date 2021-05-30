@@ -37,7 +37,7 @@ let myFunction = (function () {
   //function to scroll page to top. Time out function is added
   //so that scroll gets off after completing scroll event
   let scrollToTop = function () {
-    if (myTools.elementInViewport(".arrowdown")) {
+    if (myTools.elementInViewport(".banner")) {
       document.documentElement.scrollTop = 0;
       setTimeout(function () {
         myTools.scrollOff("body");
