@@ -41,7 +41,7 @@ let myFunction = (function () {
       document.documentElement.scrollTop = 0;
       setTimeout(function () {
         myTools.scrollOff("body");
-      }, 200);
+      }, 500);
     }
   };
 
