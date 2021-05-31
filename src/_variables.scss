@@ -12,6 +12,12 @@
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
 $primary: #ffffff;
 $text-light: #a8a8a8;
 $secondary: #000000;
