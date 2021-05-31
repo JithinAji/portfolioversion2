@@ -47,7 +47,6 @@ let myFunction = (function () {
   //so that scroll gets off after completing scroll event
   let scrollToTop = function () {
     if (scrollDirectionUp()) {
-      console.log("in");
       if (myTools.elementInViewport(".banner")) {
         document.documentElement.scrollTop = 0;
         setTimeout(function () {
