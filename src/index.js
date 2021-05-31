@@ -3,6 +3,15 @@ import "./main.scss";
 
 let myFunction = (function () {
   let width = window.innerWidth;
+  let oldScroll = 0;
+
+  //likely to solve firefox scroll anomaly in mobile
+  let scrollDirectionUp = function () {
+    // print "false" if direction is down and "true" if up
+    let value = oldScroll > scrollY;
+    oldScroll = scrollY;
+    return value;
+  };
 
   window.onload = function () {
     changewidth();
@@ -37,11 +46,14 @@ let myFunction = (function () {
   //function to scroll page to top. Time out function is added
   //so that scroll gets off after completing scroll event
   let scrollToTop = function () {
-    if (myTools.elementInViewport(".banner")) {
-      document.documentElement.scrollTop = 0;
-      setTimeout(function () {
-        myTools.scrollOff("body");
-      }, 500);
+    if (scrollDirectionUp()) {
+      console.log("in");
+      if (myTools.elementInViewport(".banner")) {
+        document.documentElement.scrollTop = 0;
+        setTimeout(function () {
+          myTools.scrollOff("body");
+        }, 500);
+      }
     }
   };
 

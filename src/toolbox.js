@@ -64,12 +64,6 @@ const myTools = {
     win = window.open(mailto_link);
   },
 
-  // scrollDirectionUp: function () {
-  //   // print "false" if direction is down and "true" if up
-  //   let value = oldScroll > scrollY;
-  //   oldScroll = scrollY;
-  //   return value;
-  // };
 };
 
 export { myTools };
