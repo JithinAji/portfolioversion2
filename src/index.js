@@ -7,7 +7,7 @@ let myFunction = (function () {
   window.onload = function () {
     changewidth();
     if (width < 768) {
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      document.body.scrollTop = document.documentElement.scrollTop = 0; // potential problem
       setTimeout(function () {
         myTools.scrollOff("body");
       }, 500);
@@ -72,7 +72,7 @@ let myFunction = (function () {
   let changewidth = function () {
     width = window.innerWidth;
     if (width < 768) {
-      document.documentElement.scrollTop = 0;
+      //document.documentElement.scrollTop = 0;
       //document.addEventListener("scroll", scrollToTop);
       // myTools.select(".arrowdown").addEventListener("click", smoothScroll);
       // myTools.selectAll("footer a").forEach((link) => {
