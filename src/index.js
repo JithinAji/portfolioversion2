@@ -37,12 +37,7 @@ let myFunction = (function () {
   //function to scroll page to top. Time out function is added
   //so that scroll gets off after completing scroll event
   let scrollToTop = function () {
-    if (myTools.elementInViewport(".banner")) {
-      document.documentElement.scrollTop = 0;
-      setTimeout(function () {
-        myTools.scrollOff("body");
-      }, 500);
-    }
+    document.documentElement.scrollTop = 0;
   };
 
   //for smooth scroll, scroll event to be disabled while scrolling
@@ -78,22 +73,19 @@ let myFunction = (function () {
     width = window.innerWidth;
     if (width < 768) {
       document.documentElement.scrollTop = 0;
-      setTimeout(function () {
-        myTools.scrollOff("body");
-      }, 500);
       //document.addEventListener("scroll", scrollToTop);
-      myTools.select(".arrowdown").addEventListener("click", smoothScroll);
-      myTools.selectAll("footer a").forEach((link) => {
-        link.addEventListener("click", smoothScroll);
-      });
+      // myTools.select(".arrowdown").addEventListener("click", smoothScroll);
+      // myTools.selectAll("footer a").forEach((link) => {
+      //   link.addEventListener("click", smoothScroll);
+      // });
       toggleLight();
     } else {
       myTools.scrollOn("body");
       //document.removeEventListener("scroll", scrollToTop);
-      myTools.select(".arrowdown").removeEventListener("click", smoothScroll);
-      myTools.selectAll("footer a").forEach((link) => {
-        link.removeEventListener("click", smoothScroll);
-      });
+      // myTools.select(".arrowdown").removeEventListener("click", smoothScroll);
+      // myTools.selectAll("footer a").forEach((link) => {
+      //   link.removeEventListener("click", smoothScroll);
+      // });
       //these two line will fallback all styles and apply only default css styles for large screen
       toggleLight();
       myTools.select("p, h1, h2").removeAttribute("style");
