@@ -36,9 +36,9 @@ let myFunction = (function () {
 
   //function to scroll page to top. Time out function is added
   //so that scroll gets off after completing scroll event
-  let scrollToTop = function () {
-    document.documentElement.scrollTop = 0;
-  };
+  // let scrollToTop = function () {
+  //   document.documentElement.scrollTop = 0;
+  // };
 
   //for smooth scroll, scroll event to be disabled while scrolling
   let smoothScroll = function () {
