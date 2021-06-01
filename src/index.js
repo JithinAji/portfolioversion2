@@ -3,20 +3,11 @@ import "./main.scss";
 
 let myFunction = (function () {
   let width = window.innerWidth;
-  let oldScroll = 0;
-
-  //likely to solve firefox scroll anomaly in mobile
-  let scrollDirectionUp = function () {
-    // print "false" if direction is down and "true" if up
-    let value = oldScroll > scrollY;
-    oldScroll = scrollY;
-    return value;
-  };
 
   window.onload = function () {
     changewidth();
     if (width < 768) {
-      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
       setTimeout(function () {
         myTools.scrollOff("body");
       }, 500);
@@ -46,23 +37,21 @@ let myFunction = (function () {
   //function to scroll page to top. Time out function is added
   //so that scroll gets off after completing scroll event
   let scrollToTop = function () {
-    if (scrollDirectionUp()) {
-      if (myTools.elementInViewport(".banner")) {
-        document.documentElement.scrollTop = 0;
-        setTimeout(function () {
-          myTools.scrollOff("body");
-        }, 500);
-      }
+    if (myTools.elementInViewport(".banner")) {
+      document.documentElement.scrollTop = 0;
+      setTimeout(function () {
+        myTools.scrollOff("body");
+      }, 500);
     }
   };
 
   //for smooth scroll, scroll event to be disabled while scrolling
   let smoothScroll = function () {
-    document.removeEventListener("scroll", scrollToTop);
+    //document.removeEventListener("scroll", scrollToTop);
     myTools.scrollOn("body");
-    setTimeout(function () {
-      document.addEventListener("scroll", scrollToTop);
-    }, 500);
+    // setTimeout(function () {
+    //   document.addEventListener("scroll", scrollToTop);
+    // }, 500);
   };
 
   //to come back to top whenever page is loaded
@@ -92,7 +81,7 @@ let myFunction = (function () {
       setTimeout(function () {
         myTools.scrollOff("body");
       }, 500);
-      document.addEventListener("scroll", scrollToTop);
+      //document.addEventListener("scroll", scrollToTop);
       myTools.select(".arrowdown").addEventListener("click", smoothScroll);
       myTools.selectAll("footer a").forEach((link) => {
         link.addEventListener("click", smoothScroll);
@@ -100,7 +89,7 @@ let myFunction = (function () {
       toggleLight();
     } else {
       myTools.scrollOn("body");
-      document.removeEventListener("scroll", scrollToTop);
+      //document.removeEventListener("scroll", scrollToTop);
       myTools.select(".arrowdown").removeEventListener("click", smoothScroll);
       myTools.selectAll("footer a").forEach((link) => {
         link.removeEventListener("click", smoothScroll);
