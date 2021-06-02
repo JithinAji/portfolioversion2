@@ -3,6 +3,7 @@ import "./main.scss";
 
 let myFunction = (function () {
   let width = window.innerWidth;
+  let mode = "light";
 
   window.onload = function () {
     changewidth();
@@ -22,6 +23,7 @@ let myFunction = (function () {
     myTools.selectAll(".card").forEach((elem) => {
       elem.style.backgroundColor = "#a8a8a8";
     });
+    mode = "dark";
   };
 
   let toggleLight = () => {
@@ -32,13 +34,8 @@ let myFunction = (function () {
     myTools.selectAll(".card").forEach((elem) => {
       elem.style.backgroundColor = "#fafafa";
     });
+    mode = "light";
   };
-
-  //function to scroll page to top. Time out function is added
-  //so that scroll gets off after completing scroll event
-  // let scrollToTop = function () {
-  //   document.documentElement.scrollTop = 0;
-  // };
 
   //for smooth scroll, scroll event to be disabled while scrolling
   let smoothScroll = function () {
@@ -72,20 +69,13 @@ let myFunction = (function () {
   let changewidth = function () {
     width = window.innerWidth;
     if (width < 768) {
-      //document.documentElement.scrollTop = 0;
-      //document.addEventListener("scroll", scrollToTop);
-      // myTools.select(".arrowdown").addEventListener("click", smoothScroll);
-      // myTools.selectAll("footer a").forEach((link) => {
-      //   link.addEventListener("click", smoothScroll);
-      // });
-      toggleLight();
+      if (mode === "light") {
+        toggleLight();
+      } else {
+        toggleDark();
+      }
     } else {
       myTools.scrollOn("body");
-      //document.removeEventListener("scroll", scrollToTop);
-      // myTools.select(".arrowdown").removeEventListener("click", smoothScroll);
-      // myTools.selectAll("footer a").forEach((link) => {
-      //   link.removeEventListener("click", smoothScroll);
-      // });
       //these two line will fallback all styles and apply only default css styles for large screen
       toggleLight();
       myTools.select("p, h1, h2").removeAttribute("style");

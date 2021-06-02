@@ -63,7 +63,6 @@ const myTools = {
       "mailto:" + mail + "?subject=" + subject + "&body=" + message;
     win = window.open(mailto_link);
   },
-
 };
 
 export { myTools };
