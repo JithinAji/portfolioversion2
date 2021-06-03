@@ -1,4 +1,15 @@
 @import "./variables";
+@import "./resets";
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin transition-ease {
+  transition: all 0.5s ease-in-out;
+}
 
 body {
   background-color: $primary;
@@ -156,7 +167,7 @@ footer {
   }
 }
 
-@media (min-width: $tablet) {
+@include tablet {
   body {
     width: 100%;
     background-color: $highlight;
@@ -233,7 +244,7 @@ footer {
 
       section {
         height: 250px;
-        transition: background-color 0.3s ease;
+        @include transition-ease;
         &:hover {
           background-color: $secondary !important;
           h2,
