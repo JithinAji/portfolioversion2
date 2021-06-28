@@ -39,11 +39,7 @@ let myFunction = (function () {
 
   //for smooth scroll, scroll event to be disabled while scrolling
   let smoothScroll = function () {
-    //document.removeEventListener("scroll", scrollToTop);
     myTools.scrollOn("body");
-    // setTimeout(function () {
-    //   document.addEventListener("scroll", scrollToTop);
-    // }, 500);
   };
 
   //to come back to top whenever page is loaded

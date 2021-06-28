@@ -140,12 +140,13 @@ form {
   #submit {
     width: auto;
     margin: auto;
-    border-radius: 5px;
     background-color: $secondary;
     color: $primary;
     font-size: 1.5rem;
     padding: 1rem 2rem;
     font-weight: 700;
+    border: 3px solid $primary;
+    cursor: pointer;
   }
 }
 
