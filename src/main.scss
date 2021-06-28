@@ -16,6 +16,35 @@ body {
   width: 100%;
 }
 
+body.dark {
+  background-color: $secondary;
+  header {
+    h1 {
+      color: $primary;
+    }
+    nav {
+      h4 {
+        color: $primary;
+      }
+    }
+  }
+  article {
+    p {
+      color: $primary;
+    }
+  }
+  .card {
+    background-color: #6e706f;
+    h2 {
+      color: $primary;
+    }
+  }
+  #submit {
+    background-color: $primary;
+    color: $secondary;
+  }
+}
+
 hr {
   border-top: 2px solid $secondary;
   width: 100%;

@@ -16,24 +16,26 @@ let myFunction = (function () {
   };
 
   let toggleDark = () => {
-    myTools.select("body").style.backgroundColor = "#000000";
-    myTools.selectAll("p, h1, h4").forEach((elem) => {
-      elem.style.color = "#ffffff";
-    });
-    myTools.selectAll(".card").forEach((elem) => {
-      elem.style.backgroundColor = "#a8a8a8";
-    });
+    // myTools.select("body").style.backgroundColor = "#000000";
+    // myTools.selectAll("p, h1, h4").forEach((elem) => {
+    //   elem.style.color = "#ffffff";
+    // });
+    // myTools.selectAll(".card").forEach((elem) => {
+    //   elem.style.backgroundColor = "#a8a8a8";
+    // });
+    myTools.select("body").classList.add("dark");
     mode = "dark";
   };
 
   let toggleLight = () => {
-    myTools.select("body").style.backgroundColor = "#ffffff";
-    myTools.selectAll("p, h1, h4").forEach((elem) => {
-      elem.style.color = "#000000";
-    });
-    myTools.selectAll(".card").forEach((elem) => {
-      elem.style.backgroundColor = "#fafafa";
-    });
+    // myTools.select("body").style.backgroundColor = "#ffffff";
+    // myTools.selectAll("p, h1, h4").forEach((elem) => {
+    //   elem.style.color = "#000000";
+    // });
+    // myTools.selectAll(".card").forEach((elem) => {
+    //   elem.style.backgroundColor = "#fafafa";
+    // });
+    myTools.select("body").classList.remove("dark");
     mode = "light";
   };
 
