@@ -16,7 +16,7 @@ let myFunction = (function () {
   };
 
   let toggleDark = () => {
-    // myTools.select("body").style.backgroundColor = "#000000";
+    myTools.select("body").style.backgroundColor = "#000000";
     // myTools.selectAll("p, h1, h4").forEach((elem) => {
     //   elem.style.color = "#ffffff";
     // });
@@ -28,13 +28,11 @@ let myFunction = (function () {
   };
 
   let toggleLight = () => {
-    // myTools.select("body").style.backgroundColor = "#ffffff";
-    // myTools.selectAll("p, h1, h4").forEach((elem) => {
-    //   elem.style.color = "#000000";
-    // });
-    // myTools.selectAll(".card").forEach((elem) => {
-    //   elem.style.backgroundColor = "#fafafa";
-    // });
+    //window when resized background color not changing to white from yellow
+    myTools.select("body").style.backgroundColor = "#ffffff";
+    myTools.select(".arrowdown").src = "./dist/assets/arrow-down.svg";
+    myTools.select(".banner").src = "./dist/assets/light.svg";
+    //
     myTools.select("body").classList.remove("dark");
     mode = "light";
   };
@@ -43,8 +41,6 @@ let myFunction = (function () {
   let smoothScroll = function () {
     myTools.scrollOn("body");
   };
-
-  //to come back to top whenever page is loaded
 
   //for smooth scroll scroll event to be disabled while scrolling
   myTools.select(".arrowdown").addEventListener("click", smoothScroll);

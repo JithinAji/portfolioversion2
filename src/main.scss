@@ -16,6 +16,7 @@ body {
   width: 100%;
 }
 
+//for dark mode
 body.dark {
   background-color: $secondary;
   header {
@@ -44,6 +45,7 @@ body.dark {
     color: $secondary;
   }
 }
+//dark mode toggle ends
 
 hr {
   border-top: 2px solid $secondary;
