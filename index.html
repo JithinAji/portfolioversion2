@@ -1,119 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./dist/main.css" />
-    <title>Jithin Aji</title>
-  </head>
-  <body>
-    <div id="site-wrapper">
-      <header>
-        <img
-          src="./dist/assets/light.svg"
-          alt="counting stars"
-          class="banner"
-        />
-        <div>
-          <h1>Code & Build</h1>
-          <h2>I'm a front end web developer based in India.</h2>
-        </div>
-        <a href="#navbar">
-          <img
-            src="./dist/assets/arrow-down.svg"
-            alt="arrow down"
-            class="arrowdown"
-          />
-        </a>
-        <nav id="navbar">
-          <img src="./dist/assets/propic.JPG" alt="jithin aji" />
-          <div>
-            <h4>Jithin Aji</h4>
-            <a href="https://twitter.com/AjiJithin">twitter</a>
-            <a href="https://github.com/JithinAji">github</a>
-            <a href="https://jithin396.medium.com/">blogs</a>
-          </div>
-        </nav>
-        <hr />
-      </header>
-      <main>
-        <article class="about" id="about">
-          <p>Hellooooo!!!!!!!!!!</p>
-          <br />
-          <p>
-            I am Jithin, a web developer based in India. I struggle and hustle
-            to learn javascript, CSS and HTML almost all day. Why spent your
-            time learning this you ask, Because I can make beautiful websites
-            using these tools.
-          </p>
-          <br />
-          <p>
-            I am familier with some other cool frameworks such as Vuejs,
-            ReactJS, Bootstrap and tailwindcss which makes my work a bit easier.
-            I do know some backend stuff using Node JS and Express. So if the
-            situation challenges me I see myself turning in to a fullstack web
-            developer.
-          </p>
-          <br />
-        </article>
-      </main>
-      <article class="work" id="work">
-        <h2>Work</h2>
-        <br />
-        <p>
-          Over the busy couple of years working professionally I have invested a
-          decent amount of time to code some good stuff. I had the honour of
-          collaborating with few of my friends and acquaintance to help them
-          establish online presence with beautiful websites. I have a lot more
-          projects which you can find in my github account. I decided to keep
-          everything simple here.
-        </p>
-        <a href="https://jithinaji.github.io/whatsappwebvue/"
-          ><section class="card">
-            <h2>Whatsapp Web clone</h2>
-            <p>A front end clone of whatsapp web which is responsive.</p>
-          </section>
-        </a>
-        <a href="https://jithinaji.github.io/Bill-Split/"
-          ><section class="card">
-            <h2>Bill split</h2>
-            <p>
-              App to split money among multiple persons based on contribution.
-            </p>
-          </section>
-        </a>
-        <a href="https://shrouded-savannah-77190.herokuapp.com/"
-          ><section class="card">
-            <h2>Personal Diary app</h2>
-            <p>A diary application made using Express.</p>
-          </section>
-        </a>
-      </article>
-      <form onsubmit="event.preventDefault();" id="contact">
-        <h2>Contact</h2>
-        <input
-          type="text"
-          placeholder="subject"
-          name="”subject”"
-          id="subject"
-        />
-        <textarea
-          type="text"
-          placeholder="message (include your contact details for me to contact you)"
-          name="”message”"
-          id="message"
-          rows="8"
-        ></textarea>
-        <button id="submit">Send</button>
-      </form>
-      <footer>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jithin Aji — Frontend Engineer</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Frontend Engineer — I build systems that explain how things work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <h1 class="name">Jithin Aji</h1>
+        <div class="title">Frontend Engineer</div>
+      </div>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#concepts">Concepts</a>
         <a href="#about">About</a>
-        <a href="#work">Works</a>
-        <a href="#">Writing</a>
         <a href="#contact">Contact</a>
-      </footer>
+        <a class="ghost" href="https://github.com/JithinAji" target="_blank" rel="noopener">GitHub</a>
+      </nav>
     </div>
-    <script src="./dist/main.js"></script>
-  </body>
+  </header>
+
+  <main>
+    <section class="hero container" id="hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h2 class="tagline">I build systems that <span class="text-gradient">explain how things work</span></h2>
+          <p class="intro">I focus on building clear, minimal systems to reveal how tools like reactivity and state
+            actually work under the hood. Recent work explores reactivity models and a custom JSON-based state engine.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn">See projects</a>
+            <a href="#concepts" class="btn ghost">Read concepts</a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="image-halo"></div>
+          <img src="dist/assets/propic.JPG" alt="Jithin Aji" class="profile-img" />
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects container">
+      <h3 class="section-title">Featured Work</h3>
+      <p class="muted">Technical implementations exploring frontend internals and design patterns.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h4>Reactivity Playground</h4>
+          <p class="card-desc"><strong>Problem:</strong> Reactivity is often opaque in modern
+            frameworks.<br /><strong>What I built:</strong> An interactive playground comparing Manual,
+            <code>Object.defineProperty</code>, and <code>Proxy</code> approaches to showcase internals and tradeoffs.
+          </p>
+          <ul class="concepts">
+            <li>Reactivity models</li>
+            <li>Dependency tracking</li>
+            <li>Performance tradeoffs</li>
+          </ul>
+          <div class="card-actions">
+            <a class="link" href="https://jithinaji.github.io/reactivity-playground/" target="_blank"
+              rel="noopener">Live app ↗</a>
+            <a class="link" href="https://github.com/JithinAji/reactivity-playground" target="_blank"
+              rel="noopener">GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h4>JSON Engine</h4>
+          <p class="card-desc"><strong>Problem:</strong> State systems rarely expose simple, auditable
+            primitives.<br /><strong>What I built:</strong> A concise JSON-first state engine featuring path-based
+            updates, batching, listeners, and undo/redo via the command pattern.</p>
+          <ul class="concepts">
+            <li>Command pattern (undo/redo)</li>
+            <li>Batching & listeners</li>
+            <li>Path-based updates</li>
+          </ul>
+          <div class="card-actions">
+            <a class="link" href="https://jithinaji.github.io/JSONHelper/" target="_blank" rel="noopener">Live app ↗</a>
+            <a class="link" href="https://github.com/JithinAji/JSONHelper" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="concepts" class="concepts-section container">
+      <div class="section-header">
+        <h3 class="section-title">Concepts & Thinking</h3>
+        <p class="muted">A brief overview of the mechanical principles I focus on.</p>
+      </div>
+      <div class="concept-grid">
+        <div class="concept">
+          <div class="concept-icon">⚡</div>
+          <h5>Reactivity</h5>
+          <p>Explored how change propagation works through observers and dependency graphs. Learned the practical
+            tradeoffs between implementation simplicity and flexibility.</p>
+        </div>
+        <div class="concept">
+          <div class="concept-icon">🔄</div>
+          <h5>State Management</h5>
+          <p>Investigated mutable vs immutable approaches. Implemented the command pattern to enable reliable undo/redo,
+            and used batching to reduce computational overhead.</p>
+        </div>
+        <div class="concept">
+          <div class="concept-icon">📦</div>
+          <h5>Command Pattern</h5>
+          <p>Encapsulating mutations into command objects provides a clean, auditable history of state. It transforms
+            state management from a black box into a traceable sequence of events.</p>
+        </div>
+        <div class="concept">
+          <div class="concept-icon">🐛</div>
+          <h5>Debugging</h5>
+          <p>Instrumenting state and commands so systems are auditable and explainable. The best learning tool is an
+            observable system.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about container">
+      <h3 class="section-title">About</h3>
+      <p>I am Jithin, a web developer based in India. My focus is on deeply understanding core web
+        technologies—JavaScript, CSS, and HTML—rather than just gluing frameworks together. I enjoy picking apart
+        systems and rebuilding small, understandable abstractions to figure out how they really work. I prioritize
+        clarity and teachable code over flashy UI.</p>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h3 class="section-title">Let's Connect</h3>
+      <p class="muted">Open to collaborations and technical discussions.</p>
+      <div class="contact-card">
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">GitHub</span>
+            <a href="https://github.com/JithinAji" target="_blank" rel="noopener">github.com/JithinAji</a>
+          </li>
+          <li>
+            <span class="contact-label">LinkedIn</span>
+            <a href="https://linkedin.com/in/jithinaji" target="_blank" rel="noopener">linkedin.com/in/jithinaji</a>
+          </li>
+          <li>
+            <span class="contact-label">Email</span>
+            <a href="mailto:jithin396@gmail.com" class="highlight-link">jithin396@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© Jithin Aji — Frontend Engineer</small>
+    </div>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+
 </html>
