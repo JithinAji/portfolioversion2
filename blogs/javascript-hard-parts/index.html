@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>In This Age of AI, I took a course on Javascript the Hard Parts, But why? — Jithin Aji</title>
+  <link rel="stylesheet" href="../../style.css">
+  <meta name="description" content="Notes on JavaScript execution context, call stack, callbacks, and closures from JavaScript The Hard Parts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <a href="../../index.html" class="brand-link">
+          <h1 class="name">Jithin Aji</h1>
+          <div class="title">Frontend Engineer</div>
+        </a>
+      </div>
+      <nav class="nav">
+        <a href="../../index.html#projects">Projects</a>
+        <a href="../../index.html#concepts">Concepts</a>
+        <a href="../../blog.html" class="active">Blog</a>
+        <a href="https://github.com/JithinAji/til/tree/main" target="_blank" rel="noopener" title="Today I Learned">TIL</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#contact">Contact</a>
+        <a class="ghost" href="https://github.com/JithinAji" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog container">
+      <div class="blog-header-row">
+        <a href="../../blog.html" class="back-link">← Back to blogs</a>
+      </div>
+
+      <div class="blog-list">
+        <article class="blog-post" id="js-hard-parts">
+          <header class="blog-post-header">
+            <h1 class="blog-post-page-title">In This Age of AI, I took a course on Javascript the Hard Parts, But why?</h1>
+            <div class="blog-post-meta">
+              <span class="blog-date">October 25, 2026</span>
+              <span class="blog-read-time">5 min read</span>
+              <span class="blog-tag">JavaScript Internals</span>
+            </div>
+          </header>
+          
+          <div class="blog-post-content">
+            <p>I know everyone is chasing tokens to spin up cool-looking applications that they can show off to an individual or large groups of individuals to squeeze out all the admiration their hearts desire. Some of you may have noticed the emphasis I put on pointing out that some people do crazy things just to impress a single human soul.</p>
+            
+            <p>I started taking AI seriously, not because my manager forced me to, but because of something that happened one fine day. A friend of mine showed me a cool-looking webpage that he had made for his bestie (a female who has a boyfriend, and that boyfriend is not this so-called friend of mine).</p>
+            
+            <p>He managed to host it on GitHub Pages even though he had zero clue about what Git or GitHub was. He did it using ChatGPT on his phone, without access to a regular computer, which I had always thought was indispensable for web app development.</p>
+            
+            <p>This dude, who is so lazy that he won't even learn how to ride a bicycle, managed to build something using AI that took me a considerable amount of time to learn how to build myself.</p>
+            
+            <p>AI shit is real, folks.</p>
+            
+            <p>Then why did I take a JavaScript course if AI can do everything?<br>
+            I have no idea. All I know is that I had a good time taking it.</p>
+            
+            <p>Was it useful?<br>
+            Yes, if you're planning to attend job interviews. At least, I hope so. It was great fun, too.</p>
+            
+            <p>I'll just note down everything I've learned, since I don't know a better way to show it off to the world.</p>
+
+            <h3>Execution Context</h3>
+            
+            <p>JavaScript executes synchronous code line by line. Each function invocation creates a new execution context, which has a memory component where its related data is stored. It also has an execution thread that executes the code line by line.</p>
+            
+            <p>The global execution context is created initially when JavaScript starts executing a script. The function <code>add</code>, when declared, is stored in memory. When the function is invoked using <code>()</code>, a new execution context for the <code>add</code> function is created, which has its own local memory containing the values of <code>num1</code> and <code>num2</code>.</p>
+            
+            <p>Finally, the function returns a value, which gets stored in the global execution context's memory under the variable name <code>sum</code>. After the function returns, its execution context is removed from the call stack.</p>
+
+            <div class="blog-code-block">
+              <div class="blog-code-header">
+                <div class="code-dots">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                </div>
+                <span>execution-context.js</span>
+              </div>
+              <pre><code><span class="hl-keyword">function</span> <span class="hl-func">add</span>(<span class="hl-var">num1</span>, <span class="hl-var">num2</span>) {
+    <span class="hl-keyword">return</span> <span class="hl-var">num1</span> + <span class="hl-var">num2</span>;
+}
+
+<span class="hl-keyword">let</span> <span class="hl-var">sum</span> = <span class="hl-func">add</span>(<span class="hl-num">5</span>, <span class="hl-num">10</span>); <span class="hl-comment">// stored in global memory: sum = 15</span></code></pre>
+            </div>
+
+            <figure class="blog-figure">
+              <img src="images/execution-context.jpg" alt="Handwritten diagram showing JavaScript Execution Context and Global Execution Context memory and thread" class="blog-diagram-img" loading="lazy">
+              <figcaption>Figure 1: Anatomy of an Execution Context — Thread of Execution and Memory Environment</figcaption>
+            </figure>
+
+            <h3>Call Stack</h3>
+            
+            <p>The call stack keeps track of the functions that are currently being executed. Execution starts in the global execution context.</p>
+            
+            <p>When the <code>add()</code> function is called, its execution context is added to the call stack. When the <code>inputnum()</code> function is called from inside <code>add()</code>, its execution context is added to the top of the call stack.</p>
+            
+            <p>When <code>inputnum()</code> finishes executing, its execution context is popped from the call stack, and JavaScript continues executing <code>add()</code> from where it left off. When <code>add()</code> finishes executing, its execution context is also popped from the call stack, and execution continues in the global context.</p>
+
+            <div class="blog-code-block">
+              <div class="blog-code-header">
+                <div class="code-dots">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                </div>
+                <span>call-stack.js</span>
+              </div>
+              <pre><code><span class="hl-keyword">function</span> <span class="hl-func">inputnum</span>() {
+    <span class="hl-keyword">return</span> <span class="hl-num">10</span>;
+}
+
+<span class="hl-keyword">function</span> <span class="hl-func">add</span>() {
+    <span class="hl-keyword">let</span> <span class="hl-var">num</span> = <span class="hl-func">inputnum</span>(); <span class="hl-comment">// pushes inputnum() to stack</span>
+    <span class="hl-keyword">return</span> <span class="hl-var">num</span> + <span class="hl-num">5</span>;
+}
+
+<span class="hl-func">add</span>(); <span class="hl-comment">// pushes add() to stack on top of global context</span></code></pre>
+            </div>
+
+            <figure class="blog-figure">
+              <img src="images/call-stack.jpg" alt="Handwritten diagram showing JavaScript Call Stack and function execution contexts" class="blog-diagram-img" loading="lazy">
+              <figcaption>Figure 2: The Call Stack — Pushing and popping execution contexts</figcaption>
+            </figure>
+
+            <h3>Callbacks and Higher order functions</h3>
+            
+            <p>In JavaScript, we can pass a function as an argument to another function or return a function from inside another function. Such functions are called higher-order functions.</p>
+            
+            <p>Example:</p>
+
+            <div class="blog-code-block">
+              <div class="blog-code-header">
+                <div class="code-dots">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                </div>
+                <span>higher-order-functions.js</span>
+              </div>
+              <pre><code><span class="hl-keyword">function</span> <span class="hl-func">apply</span>(<span class="hl-var">arg</span>, <span class="hl-var">func</span>) {
+    <span class="hl-keyword">return</span> <span class="hl-func">func</span>(<span class="hl-var">arg</span>);
+}
+
+<span class="hl-keyword">let</span> <span class="hl-var">myFunc</span> = (<span class="hl-var">num</span>) => <span class="hl-var">num</span> * <span class="hl-var">num</span>;
+
+<span class="hl-var">console</span>.<span class="hl-func">log</span>(<span class="hl-func">apply</span>(<span class="hl-num">5</span>, <span class="hl-var">myFunc</span>)); <span class="hl-comment">// 25</span></code></pre>
+            </div>
+
+            <p>Here, <code>apply</code> is a higher-order function because it accepts another function as an argument.</p>
+            
+            <p><code>myFunc</code> is passed to <code>apply</code>, which invokes it with the value 5. The function returns 25, which is then printed to the console.</p>
+            
+            <p>Passing a function inside another function as an argument is known as callback.</p>
+
+            <h3>Closure</h3>
+            
+            <p>Consider the following example:</p>
+
+            <div class="blog-code-block">
+              <div class="blog-code-header">
+                <div class="code-dots">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                </div>
+                <span>closure.js</span>
+              </div>
+              <pre><code><span class="hl-keyword">function</span> <span class="hl-func">increment</span>() {
+    <span class="hl-keyword">let</span> <span class="hl-var">ctr</span> = <span class="hl-num">1</span>;
+
+    <span class="hl-keyword">return</span> <span class="hl-keyword">function</span> <span class="hl-func">inc</span>() {
+        <span class="hl-var">ctr</span>++;
+    };
+}
+
+<span class="hl-keyword">let</span> <span class="hl-var">myFunc</span> = <span class="hl-func">increment</span>();
+<span class="hl-func">myFunc</span>();
+<span class="hl-func">myFunc</span>(); <span class="hl-comment">// ctr = 3</span>
+
+<span class="hl-keyword">let</span> <span class="hl-var">myFunc2</span> = <span class="hl-func">increment</span>();
+<span class="hl-func">myFunc2</span>();
+<span class="hl-func">myFunc2</span>(); <span class="hl-comment">// ctr = 3</span></code></pre>
+            </div>
+
+            <p>Calling <code>myFunc</code> has access to the <code>ctr</code> variable even after the <code>increment()</code> function has finished executing. This is possible because of a closure.</p>
+            
+            <p><code>myFunc</code> and <code>myFunc2</code> each have their own separate <code>ctr</code> variable because they are created by separate invocations of <code>increment()</code>.</p>
+            
+            <p>Each function maintains its own counter independently. Calling <code>myFunc</code> does not affect the counter associated with <code>myFunc2</code>.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© Jithin Aji — Frontend Engineer</small>
+    </div>
+  </footer>
+</body>
+
+</html>
